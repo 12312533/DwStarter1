@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Undangan Pernikahan Raisa & Adrian</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Pinyon+Script&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="locked">
+<audio id="bgm" preload="auto" loop playsinline></audio>
+
+<!-- ================= COVER ================= -->
+<div id="cover">
+  <div class="inside"><div>
+    <p>The Wedding of</p>
+    <h1 class="script names" id="cvNames"></h1>
+    <p id="cvDate"></p>
+    <div class="guest"><small>Kepada Yth. Bapak/Ibu/Saudara/i</small><b id="guest">Tamu Undangan</b></div>
+  </div></div>
+  <div class="door l"><svg id="fl" viewBox="0 0 200 400" preserveAspectRatio="xMidYMid slice"></svg></div>
+  <div class="door r"><svg id="fr" viewBox="0 0 200 400" preserveAspectRatio="xMidYMid slice"></svg></div>
+  <button class="seal" id="openBtn" aria-label="Buka undangan"><span id="mono"></span></button>
+  <div class="tap">KETUK UNTUK MEMBUKA</div>
+</div>
+
+<canvas id="fx"></canvas>
+<button id="mus" aria-label="Putar atau jeda musik">♪</button>
+<div id="toast" role="status"></div>
+
+<main>
+<section id="hero"><div class="panel rv">
+  <p class="sub">Kami mengundang Anda</p>
+  <h1 class="names" id="hNames"></h1>
+  <svg class="orn" viewBox="0 0 120 20"><path d="M2 10h44M74 10h44" stroke="#c59a3e"/><path d="M60 2l8 8-8 8-8-8z" fill="none" stroke="#c59a3e"/></svg>
+  <p id="hDate" style="font-size:1.3em;color:var(--brown)"></p>
+  <div class="cd" id="cd"></div>
+  <p style="margin-top:16px;font-style:italic;font-size:.95em" id="quote"></p>
+</div></section>
+
+<section id="couple"><div class="panel wide rv">
+  <h2>Mempelai</h2>
+  <p class="sub">Dengan memohon rahmat dan ridho Tuhan Yang Maha Esa</p>
+  <div class="couple" id="coupleBox"></div>
+</div></section>
+
+<section id="event"><div class="panel wide rv">
+  <h2>Rangkaian Acara</h2>
+  <div class="events" id="events"></div>
+  <div class="map"><iframe id="mapFrame" title="Lokasi acara" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+  <div class="row"><a class="btn sm" id="gmaps" target="_blank" rel="noopener">Buka di Google Maps</a><a class="btn sm ghost" id="waze" target="_blank" rel="noopener">Buka di Waze</a></div>
+  <div class="dress">
+    <h2 style="font-size:clamp(34px,7vw,48px);margin-bottom:4px">Dress Code</h2>
+    <p id="dcTitle" style="font-size:1.25em;color:var(--brown);font-weight:600"></p>
+    <div class="sw" id="dcSw"></div>
+    <p id="dcDesc" style="max-width:480px;margin:auto"></p>
+    <p id="dcAvoid" style="margin-top:8px;font-size:.9em;color:var(--mocha)"></p>
+  </div>
+</div></section>
+
+<section id="story"><div class="panel wide flat rv">
+  <h2>Cerita Cinta Kami</h2>
+  <div class="tl" id="tl"></div>
+</div></section>
+
+<section id="gallery"><div class="panel wide rv">
+  <h2>Galeri</h2>
+  <div class="stage" id="stage"><div class="ring" id="ring"></div></div>
+  <div class="row"><button class="btn sm ghost" id="prev" aria-label="Foto sebelumnya">‹</button><button class="btn sm ghost" id="next" aria-label="Foto berikutnya">›</button></div>
+  <div class="video" id="video"></div>
+</div></section>
+
+<section id="rsvp"><div class="panel rv">
+  <h2>Konfirmasi Kehadiran</h2>
+  <form id="rsvpForm">
+    <label for="rn">Nama</label><input id="rn" required maxlength="60" autocomplete="name">
+    <label>Kehadiran</label>
+    <div class="seg">
+      <label><input type="radio" name="st" value="Hadir" checked><span>Hadir</span></label>
+      <label><input type="radio" name="st" value="Ragu-ragu"><span>Ragu-ragu</span></label>
+      <label><input type="radio" name="st" value="Tidak Hadir"><span>Tidak Hadir</span></label>
+    </div>
+    <label for="rc">Jumlah tamu</label>
+    <select id="rc"><option value="1">1 orang</option><option value="2">2 orang</option></select>
+    <p class="msg" id="rMsg"></p>
+    <div class="row"><button class="btn" type="submit">Kirim Konfirmasi</button></div>
+  </form>
+</div></section>
+
+<section id="gift"><div class="panel wide rv">
+  <h2>Amplop Digital</h2>
+  <p>Doa restu Anda sudah menjadi hadiah terindah. Bila ingin memberi tanda kasih, Anda dapat menggunakan salah satu cara berikut.</p>
+  <div class="cards" id="cards"></div>
+  <div class="qris"><svg id="qr" viewBox="0 0 21 21" shape-rendering="crispEdges"></svg></div>
+  <p class="sub">QRIS (ganti dengan gambar QR asli)</p>
+  <div class="card" style="margin-top:22px;text-align:center"><p class="sub" style="color:var(--gold2)">Kirim kado</p><p id="addr" style="margin:6px 0 14px"></p><button class="btn sm ghost" style="color:var(--gold2)" data-copy-addr>Salin Alamat</button></div>
+</div></section>
+
+<section id="wish"><div class="panel flat rv">
+  <h2>Ucapan &amp; Doa</h2>
+  <form id="wishForm" class="wishes">
+    <label for="wn">Nama</label><input id="wn" required maxlength="40">
+    <label for="wm">Ucapan</label><textarea id="wm" rows="3" required maxlength="300"></textarea>
+    <div class="row"><button class="btn" type="submit">Kirim Ucapan</button></div>
+  </form>
+  <div class="list" id="wList"></div>
+</div></section>
+</main>
+
+<footer>
+  <p class="script" style="font-size:2.4em" id="fNames"></p>
+  <p style="max-width:460px;margin:8px auto">Merupakan kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
